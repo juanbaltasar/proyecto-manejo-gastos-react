@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import Header from './Components/Header'
-import OperationList from './Components/OperationList'
+import OperationsList from './Components/OperationList'
 
 //import Routes from './routes'
 function App(props) {
@@ -39,7 +39,7 @@ function App(props) {
   return (
     <div className="App">
       <Header/>
-      <OperationList />
+      <OperationsList />
     </div>
   );
 }

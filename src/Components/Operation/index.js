@@ -2,14 +2,16 @@ import axios from 'axios';
 
 import { connect } from 'react-redux'
 
-function Operation({ Op }){
+function Operation(props){
+    const { Op } = props;
     const url = "https://603c46e8f4333a0017b6755c.mockapi.io/api/Operaciones";
     
     const handleDeleteOperation = () => {
         if(window.confirm("Esta seguro?")){
             const id = Op.Id
+            props.deleteOperation(id);
             try {
-                axios.delete(url + `/${id}`).then(() => {return console.log("Hola")})
+                axios.delete(url + `/${id}`).catch(null);
             } catch (error) {
                 console.log(error)
             }
@@ -32,8 +34,8 @@ function Operation({ Op }){
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteOperation: (Id) => dispatch({ type:'DELETE_OPERATION',  })
+        deleteOperation: (Id) => dispatch({ type:'DELETE_OPERATION',  data:Id})
     }
 }
 
-export default Operation
+export default connect(null, mapDispatchToProps)(Operation)

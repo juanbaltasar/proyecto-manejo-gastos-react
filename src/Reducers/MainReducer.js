@@ -10,6 +10,11 @@ const MainReducer = (state = initState, action) => {
                 ...state,
                 Operations: [...state.Operations, action.data]
             }
+        case 'DELETE_OPERATION':
+            return{
+                ...state,
+                Operations: state.Operations.filter((value) => { return value.Id !== action.data})
+            }
         case 'ADD_AMOUNTSAVED':
             return{
                 ...state,
